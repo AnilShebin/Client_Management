@@ -1,5 +1,3 @@
-import ClientItem from './ClientItem';
-
 interface Client {
   ID: number;
   First_name: string;
@@ -9,15 +7,12 @@ interface Client {
 
 interface ClientListProps {
   data: Client[];
-  handleDeleteClient: (id: number) => void;
-  setSelectedClient: (client: Client | null) => void;
-  handleEditClick: (client: Client) => void;
 }
 
-function ClientList({ data, handleDeleteClient, setSelectedClient, handleEditClick }: ClientListProps) {
+function ClientList({ data }: ClientListProps) {
   return (
     <div>
-      <h2 className="mt-4">Client List</h2>
+      <h2 className="mt-4"></h2>
       <div className="table-responsive">
         <table className="table table-striped table-bordered table-hover table-info">
           <thead>
@@ -25,18 +20,15 @@ function ClientList({ data, handleDeleteClient, setSelectedClient, handleEditCli
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {data.map((client: Client) => (
-              <ClientItem
-                key={client.ID}
-                client={client}
-                handleDeleteClient={handleDeleteClient}
-                setSelectedClient={setSelectedClient}
-                handleEditClick={handleEditClick}
-              />
+              <tr key={client.ID}>
+                <td>{client.First_name}</td>
+                <td>{client.Last_name}</td>
+                <td>{client.email}</td>
+              </tr>
             ))}
           </tbody>
         </table>
